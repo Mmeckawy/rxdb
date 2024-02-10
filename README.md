@@ -23,8 +23,6 @@
 <p align="center">
     <a href="https://github.com/pubkey/rxdb/releases"><img src="https://img.shields.io/github/v/release/pubkey/rxdb?color=%23ff00a0&include_prereleases&label=version&sort=semver&style=flat-square"></a>
     &nbsp;
-    <a href="https://rxdb.info/tutorials/typescript.html"><img src="https://img.shields.io/npm/types/rxdb?style=flat-square"></a>
-    &nbsp;
     <a href="https://github.com/pubkey/rxdb/blob/master/LICENSE.txt"><img src="https://img.shields.io/github/license/pubkey/rxdb?style=flat-square"></a>
     &nbsp;
     <a href="https://github.com/pubkey/rxdb/stargazers"><img src="https://img.shields.io/github/stars/pubkey/rxdb?color=f6f8fa&style=flat-square"></a>
