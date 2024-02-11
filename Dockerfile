@@ -1,7 +1,7 @@
 FROM node:20
 
 # Set the working directory in the container
-WORKDIR .
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
@@ -13,7 +13,7 @@ RUN npm install
 COPY . .
 
 # Change directory to examples/react
-WORKDIR /examples/react
+WORKDIR /usr/src/app/examples/react
 
 RUN npm run preinstall && npm install
 
