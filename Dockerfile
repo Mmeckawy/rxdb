@@ -1,7 +1,5 @@
 FROM node:20
 
-COPY . /usr/share/nginx/html/
-
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
