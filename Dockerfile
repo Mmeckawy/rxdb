@@ -21,7 +21,7 @@ RUN npm run preinstall && npm install
 ENV PORT=8888
 
 # Expose the port the app runs on
-EXPOSE 8888
+EXPOSE 3003
 
 # Define the command to run the app
 CMD ["npm", "run", "dev"]
