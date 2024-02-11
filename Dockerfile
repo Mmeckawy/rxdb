@@ -15,6 +15,9 @@ COPY . .
 # Change directory to examples/react
 WORKDIR /usr/src/app/examples/react
 
+# Set the PORT environment variable
+ENV PORT=8888
+
 # Expose the port the app runs on
 EXPOSE 8888
 
