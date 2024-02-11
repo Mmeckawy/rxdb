@@ -12,8 +12,11 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
+# Change directory to examples/react
+WORKDIR /usr/src/app/examples/react
+
 # Expose the port the app runs on
-EXPOSE 3003
+EXPOSE 8888
 
 # Define the command to run the app
-CMD ["npm", "run", "docs:serve"]
+CMD ["npm", "run", "dev"]
