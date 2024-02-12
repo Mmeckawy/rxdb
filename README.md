@@ -1,12 +1,25 @@
 # Pipeline Demo
 
-This repository contains a Jenkins pipeline demo for continuous integration and continuous deployment.
+This README provides instructions for setting up and running a CI/CD pipeline demo. The demo showcases the entire lifecycle of a code change, from committing the code to deployment, and includes monitoring, alerting, good and bad check-ins, build history, test trends, and rollback scenarios.
 
 ## Table of Contents
-1.[Pipeline in Action](#action)
+1. [Pipeline in Action](#action)
+2. [Test Cases](#test)
 
-## Pipeline in Action <a>href="#action" </a>
+## 1. Pipeline in Action <a> href="#action" </a>
 
+First off, we need to do CI by checking if there are any new commits, push, or pull requests on github. Jenkins does this step by getting triggered by a webhook created inside the github repositry. The webhook is connected to the jenkins server as shown below.
+
+<p align="center">
+  <img src="https://github.com/Mmeckawy/rxdb/assets/69309651/f240623a-cfbb-4ccc-8bb8-3d1e85fb5c99" alt="webhooks">
+</p>
+
+Inside the Jenkins server you should check the github hooks trigger in order to build automatically the piepline.
+
+## 2. Test Cases <a> href="#test" </a>
+
+In the figure below, build #13 was a bad check-in and did not run unit testing, because there was a syntax error in the script, after this error was fixed build #14 ran automatically a good check-in.
+![example](https://github.com/Mmeckawy/rxdb/assets/69309651/def1f669-c2c0-494f-8214-bf584e38d9e9)
 
 ## Accessing Jenkins Pipeline
 
