@@ -8,7 +8,8 @@ This README provides instructions for setting up and running a CI/CD pipeline de
 3. [Test Cases](#test)
 4. [Build History and Test Trends](#trend)
 5. [Rollback Scenario](#rollback)
-6. 
+6. [Run the Pipeline](#run)
+7. [Blue/Green Deployment](#dep)
 
 ## 1. Pipeline in Action <a href="#action"> </a>
 
@@ -26,8 +27,9 @@ Inside the Jenkins server you should check the github hooks trigger in order to 
 
 In the figure below, build #21 was a bad check-in as it had bad azure credentials, after this error was fixed build #22 ran automatically a good check-in.
 <p align="center">
-  <img src="https://github.com/Mmeckawy/rxdb/assets/69309651/def1f669-c2c0-494f-8214-bf584e38d9e9" alt="webhooks">
+  <img src="https://github.com/Mmeckawy/rxdb/assets/69309651/632ca1e0-7ecf-485c-ae85-2fa0c87cbcd5" alt="webhooks">
 </p>
+
 
 ## 4. Build History and Test Trends <a href="#trend"></a>
 
@@ -36,6 +38,19 @@ In the figure below, build #21 was a bad check-in as it had bad azure credential
 </p>
 
 ## 5. Rollback Scenario <a href="#rollback"></a>
+
+By adding the following script to the pipeline, the failed build is aborted, and the pipeline is triggered to use the last successful build.
+'post {
+        always {
+            // Trigger the pipeline again after rollback
+            script {
+                // Trigger the pipeline again if the build failed
+                if (currentBuild.result == 'FAILURE') {
+                    currentBuild.result = 'ABORTED' // Abort the current build to trigger a new one
+                }
+            }
+        }
+    }'
 
 ## 6. Run the Pipeline <a href="#run"></a>
 
@@ -49,7 +64,7 @@ To view and run the Jenkins pipeline, follow these steps:
 4. Navigate to the rxdb-pipeline job
 5. You can now run the pipeline
 
-## 7. Blue/Green Deployement
+## 7. Blue/Green Deployement <a  href="#dep"></a>
 Netlify is a proxy used for deployment, load balancing and continuous deployment. The blue/green deployment methodolgy was applied by treating the master branch as the green part of the method and created a branch for the blue part. Then, you should specify those 2 branches at the Site configuration --> Split testing, as shown in the figure below.
 
 <p align="center">
