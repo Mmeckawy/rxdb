@@ -4,9 +4,13 @@ This README provides instructions for setting up and running a CI/CD pipeline de
 
 ## Table of Contents
 1. [Pipeline in Action](#action)
-2. [Test Cases](#test)
+2. [Failure Alert](#alert)
+3. [Test Cases](#test)
+4. [Build History and Test Trends](#trend)
+5. [Rollback Scenario](#rollback)
+6. 
 
-## 1. Pipeline in Action <a> href="#action" </a>
+## 1. Pipeline in Action <a href="#action"> </a>
 
 First off, we need to do CI by checking if there are any new commits, push, or pull requests on github. Jenkins does this step by getting triggered by a webhook created inside the github repositry. The webhook is connected to the jenkins server as shown below.
 
@@ -16,24 +20,41 @@ First off, we need to do CI by checking if there are any new commits, push, or p
 
 Inside the Jenkins server you should check the github hooks trigger in order to build automatically the piepline.
 
-## 2. Test Cases <a> href="#test" </a>
+## 2. Failure Alert <a href="alert"> </a>
 
-In the figure below, build #13 was a bad check-in and did not run unit testing, because there was a syntax error in the script, after this error was fixed build #14 ran automatically a good check-in.
-![example](https://github.com/Mmeckawy/rxdb/assets/69309651/def1f669-c2c0-494f-8214-bf584e38d9e9)
+## 3. Test Cases <a href="#test"> </a>
 
-## Accessing Jenkins Pipeline
+In the figure below, build #21 was a bad check-in as it had bad azure credentials, after this error was fixed build #22 ran automatically a good check-in.
+<p align="center">
+  <img src="https://github.com/Mmeckawy/rxdb/assets/69309651/def1f669-c2c0-494f-8214-bf584e38d9e9" alt="webhooks">
+</p>
 
-To view the Jenkins pipeline, follow these steps:
+## 4. Build History and Test Trends <a href="#trend"></a>
 
-1. Open your web browser and navigate to [http://172.174.215.207:8080](http://20.121.56.70:8080).
+<p align="center">
+  <img src="https://github.com/Mmeckawy/rxdb/assets/69309651/ceceb1e6-b13a-4f94-a10b-ac32ea4fa605" alt="webhooks">
+</p>
+
+## 5. Rollback Scenario <a href="#rollback"></a>
+
+## 6. Run the Pipeline <a href="#run"></a>
+
+To view and run the Jenkins pipeline, follow these steps:
+
+1. Open your web browser and navigate to [http://172.174.215.207:8080](http://172.174.215.207:8080).
 2. Log in using the following credentials for testing:
    - **Username:** tester
    - **Password:** pass@123
 3. Once logged in, you will have access to the Jenkins dashboard.
-4. Navigate to the specific job or pipeline to view its details, configurations, and execution history.
+4. Navigate to the rxdb-pipeline job
+5. You can now run the pipeline
 
-The Jenkins pipeline automates the following stages:
+## 7. Blue/Green Deployement
+Netlify is a proxy used for deployment, load balancing and continuous deployment. The blue/green deployment methodolgy was applied by treating the master branch as the green part of the method and created a branch for the blue part. Then, you should specify those 2 branches at the Site configuration --> Split testing, as shown in the figure below.
 
-1. **Build**: Compiles the source code and packages it into a deployable artifact.
-2. **Test**: Executes unit tests to ensure the quality of the code.
-3. **Deploy**: Deploys the artifact to the designated environment (e.g., staging or production).
+<p align="center">
+  <img src="https://github.com/Mmeckawy/rxdb/assets/69309651/5bed4974-b1cf-4f7e-93ed-81a823f23d86" alt="webhooks">
+</p>
+
+Netlify performs split testing between the 2 branches while simultaneously performing CD.
+
