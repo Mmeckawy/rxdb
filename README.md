@@ -23,6 +23,7 @@ Inside the Jenkins server you should check the github hooks trigger in order to 
 
 ## 2. Failure Alert <a href="alert"> </a>
 
+
 ## 3. Test Cases <a href="#test"> </a>
 
 In the figure below, build #21 was a bad check-in as it had bad azure credentials, after this error was fixed build #22 ran automatically a good check-in.
@@ -30,6 +31,25 @@ In the figure below, build #21 was a bad check-in as it had bad azure credential
   <img src="https://github.com/Mmeckawy/rxdb/assets/69309651/632ca1e0-7ecf-485c-ae85-2fa0c87cbcd5" alt="webhooks">
 </p>
 
+Using email alerting mechanism the developer gets notified once the build fails
+```groovy
+post {
+                success {
+                    // Send email notification for build failure
+                    emailext subject: "Build Succeeded: ${currentBuild.fullDisplayName}",
+                              body: "The build was finished successfully.",
+                              to: "mariam.meckawy@hotmail.com",
+                              attachLog: true
+                }
+                failure {
+                    // Send email notification for build failure
+                    emailext subject: "Build failed: ${currentBuild.fullDisplayName}",
+                              body: "The build has failed. Please check the Jenkins console output for more details.",
+                              to: "mariam.meckawy@hotmail.com",
+                              attachLog: true
+                }
+            }
+```
 
 ## 4. Build History and Test Trends <a href="#trend"></a>
 
@@ -41,17 +61,19 @@ In the figure below, build #21 was a bad check-in as it had bad azure credential
 
 By adding the following script to the pipeline, the failed build is aborted, and the pipeline is triggered to use the last successful build.
 <br>
-`post {
-        always {
-            // Trigger the pipeline again after rollback
-            script {
-                // Trigger the pipeline again if the build failed
-                if (currentBuild.result == 'FAILURE') {
-                    currentBuild.result = 'ABORTED' // Abort the current build to trigger a new one
-                }
+```groovy
+post {
+    always {
+        // Trigger the pipeline again after rollback
+        script {
+            // Trigger the pipeline again if the build failed
+            if (currentBuild.result == 'FAILURE') {
+                currentBuild.result = 'ABORTED' // Abort the current build to trigger a new one
             }
         }
-    }`
+    }
+}
+```
 
 ## 6. Run the Pipeline <a href="#run"></a>
 
