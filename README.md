@@ -40,6 +40,7 @@ In the figure below, build #21 was a bad check-in as it had bad azure credential
 ## 5. Rollback Scenario <a href="#rollback"></a>
 
 By adding the following script to the pipeline, the failed build is aborted, and the pipeline is triggered to use the last successful build.
+<br>
 `post {
         always {
             // Trigger the pipeline again after rollback
