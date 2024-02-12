@@ -9,6 +9,9 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+# Copy the application files into the container
+COPY . .
+
 # Change directory to examples/react
 WORKDIR /usr/src/app/examples/react
 
