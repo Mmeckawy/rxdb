@@ -23,14 +23,6 @@ Inside the Jenkins server you should check the github hooks trigger in order to 
 
 ## 2. Failure Alert <a href="alert"> </a>
 
-
-## 3. Test Cases <a href="#test"> </a>
-
-In the figure below, build #21 was a bad check-in as it had bad azure credentials, after this error was fixed build #22 ran automatically a good check-in.
-<p align="center">
-  <img src="https://github.com/Mmeckawy/rxdb/assets/69309651/632ca1e0-7ecf-485c-ae85-2fa0c87cbcd5" alt="webhooks">
-</p>
-
 Using email alerting mechanism the developer gets notified once the build fails
 ```groovy
 post {
@@ -50,6 +42,13 @@ post {
                 }
             }
 ```
+
+## 3. Test Cases <a href="#test"> </a>
+
+In the figure below, build #21 was a bad check-in as it had bad azure credentials, after this error was fixed build #22 ran automatically a good check-in.
+<p align="center">
+  <img src="https://github.com/Mmeckawy/rxdb/assets/69309651/632ca1e0-7ecf-485c-ae85-2fa0c87cbcd5" alt="webhooks">
+</p>
 
 ## 4. Build History and Test Trends <a href="#trend"></a>
 
