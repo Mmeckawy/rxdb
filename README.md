@@ -2,13 +2,19 @@
 
 This repository contains a Jenkins pipeline demo for continuous integration and continuous deployment.
 
+## Table of Contents
+1.[Pipeline in Action](#action)
+
+## Pipeline in Action <a>href="#action" </a>
+
+
 ## Accessing Jenkins Pipeline
 
 To view the Jenkins pipeline, follow these steps:
 
-1. Open your web browser and navigate to [http://20.121.56.70:8080](http://20.121.56.70:8080).
+1. Open your web browser and navigate to [http://172.174.215.207:8080](http://20.121.56.70:8080).
 2. Log in using the following credentials for testing:
-   - **Username:** test
+   - **Username:** tester
    - **Password:** pass@123
 3. Once logged in, you will have access to the Jenkins dashboard.
 4. Navigate to the specific job or pipeline to view its details, configurations, and execution history.
