@@ -76,14 +76,14 @@ pipeline {
                     // Send email notification for build failure
                     emailext subject: "Build Succeeded: ${currentBuild.fullDisplayName}",
                               body: "The build was finished successfully.",
-                              to: "mariam.meckawy@hotmail.com",
+                              to: "wmeckawy@gmail.com",
                               attachLog: true
                 }
                 failure {
                     // Send email notification for build failure
                     emailext subject: "Build failed: ${currentBuild.fullDisplayName}",
                               body: "The build has failed. Please check the Jenkins console output for more details.",
-                              to: "mariam.meckawy@hotmail.com",
+                              to: "wmeckawy@gmail.com",
                               attachLog: true
                 }
             }
