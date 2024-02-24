@@ -18,7 +18,7 @@ WORKDIR /usr/src/app/examples/react
 RUN npm run preinstall && npm install
 
 # Set the PORT environment variable
-# ENV PORT=8888
+ENV PORT=8888
 
 # Expose the port the app runs on (if necessary)
 EXPOSE 8888
