@@ -20,11 +20,8 @@ RUN npm run preinstall && npm install
 # Build the React app
 RUN npm run build
 
-# Set the PORT environment variable
-ENV PORT=8888
-
 # Expose the port the app runs on (if necessary)
-EXPOSE 8888
+EXPOSE 3000
 
 # Define the command to run the app
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
