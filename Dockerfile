@@ -1,16 +1,21 @@
 FROM node:20
 
 # Set the working directory in the container
-WORKDIR /usr/src/app/examples/react
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
 # Install dependencies
-RUN npm run preinstall && npm install
+RUN npm install
 
 # Copy the application files into the container
 COPY . .
+
+# Set the working directory in the container
+WORKDIR /usr/src/app/examples/react
+
+RUN npm run preinstall && npm install
 
 # Build the React app
 RUN npm run build
